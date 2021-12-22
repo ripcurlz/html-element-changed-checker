@@ -1,0 +1,8 @@
+.idea
+*.sqlite
+venv
+pushoverconfig.json
+*.pyc
+*/__pycache__/*
+__pycache__/*
+*.log

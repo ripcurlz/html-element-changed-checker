@@ -1,0 +1,25 @@
+{
+  "sites": [    
+    {
+      "url": "https://jobs.avm.de/",
+      "site": "avm",
+      "elementType": "a",
+      "className": "target",
+      "classSearchString": "_self",
+      "notify": false,
+      "regexString": "^(?=.*?\\b(IT.*|Software.*|Ingenieur.*|Engineer.*|Developer.*|Cyber.*|IoT.*|Entwick.*)\\b)((?!Praktik|Abschluss|Stud|Ausbild).)*$",
+      "checkOnlySourceCodeOfSite": false
+    },    
+    {
+      "url": "https://fritz.box",
+      "site": "fritzbox",
+      "elementType": "",
+      "className": "",
+      "classSearchString": "",
+      "notify": false,
+      "regexString": ".*?(Willkommen.*?)\".*?\\n$",
+      "checkOnlySourceCodeOfSite": true
+
+    }
+  ]
+}
