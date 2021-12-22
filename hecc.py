@@ -33,8 +33,7 @@ def check_site(url: str, element_type: str, class_name: str, class_search_string
         sqlconn.create_table_if_not_exists(site=site)
         # check if we only want to search the whole site (e.g. also javascript) with regex for certain strings
         if checkOnlySourceCodeOfSite:
-            # re.DOTALL, so "." also matches newlines!
-            regex = re.compile(regex_string, re.DOTALL)
+            regex = re.compile(regex_string)
             prettified_bs_string = bs.prettify()
             matches = regex.finditer(prettified_bs_string)
             for match in matches:
@@ -51,7 +50,7 @@ def check_site(url: str, element_type: str, class_name: str, class_search_string
 
                 # only write to sql when the element description matches the regex string from the config file
                 regex = re.compile(regex_string)
-                if regex.search(element_to_write, re.DOTALL):
+                if regex.search(element_to_write):
                     sqlconn.insert_element_if_not_exists_into_table(element=element_to_write, site=site)
     except AttributeError as e:
         exception = str(sys.exc_info()[0])

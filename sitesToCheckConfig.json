@@ -17,7 +17,7 @@
       "className": "",
       "classSearchString": "",
       "notify": false,
-      "regexString": ".*?(Willkommen.*?)\".*?\\n$",
+      "regexString": "[\\S\\n ]+.*?(Willkommen.*?)\".*?\\n$",
       "checkOnlySourceCodeOfSite": true
 
     }

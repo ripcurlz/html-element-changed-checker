@@ -61,7 +61,7 @@ parameter with regex
 "notify": if to notify via pushover or not. better to leave at "false" for the first run, otherwise you might get swamped with notifications :)
 
 "regexString": regex you want to use to match the text on any prior matching html element. It has to contain at least
-one matchgroup. Important: "re.DOTALL" is used, so "." also matches newlines!
+one matchgroup.
 
 "checkOnlySourceCodeOfSite": leave at "false" for "mode" 1, set to true for "mode" 2
 
@@ -84,7 +84,7 @@ e.g. you are looking for this kind of element on the site and want to grab the t
 ```
 
 ### 2. "mode 2": example with only checking the raw source code:
-e.g. if you just want to find the text "Willkommen bei Ihrer FRITZ!Box" on the whole site
+e.g. if you just want to find the text "Willkommen bei Ihrer FRITZ!Box" on the whole site (searching over multiple lines)
 
 ```
 {
