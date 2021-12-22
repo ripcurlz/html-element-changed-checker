@@ -96,7 +96,7 @@ e.g. if you just want to find the text "Willkommen bei Ihrer FRITZ!Box" on the w
       "className": "",
       "classSearchString": "",
       "notify": false,
-      "regexString": "(Willkommen.+?\").+?\\n$",
+      "regexString": "[\\S\\n ]+.*?(Willkommen.*?)\".*?\\n$",
       "checkOnlySourceCodeOfSite": true
 
     }
