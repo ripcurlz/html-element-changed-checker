@@ -28,7 +28,7 @@ switch to user and install requirements:
 ## examplary daily run at 0:00 each day with crontab on Linux
 
 ```
-0 0 * * * cd /home/hecc && source hecc_venv/bin/activate && python3 hecc.py
+0 0 * * * /usr/bin/env bash -c 'cd /home/hecc && source /home/hecc/hecc_venv/bin/activate && python3 hecc.py' > /dev/null 2>&1
 ```
 
 ## how to configure

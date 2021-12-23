@@ -29,7 +29,7 @@ def check_site(url: str, element_type: str, class_name: str, class_search_string
         if notify:
             notifier.notify_about_exception_via_pushover(site, exception)
     try:
-        sqlconn = SqliteconnHandler(filename="hecc.sqlite", logger=logger, notify=notify)
+        sqlconn = SqliteconnHandler(filename="hecc.sqlite", logger=logger, notify=notify, notifier=notifier)
         sqlconn.create_table_if_not_exists(site=site)
         # check if we only want to search the whole site (e.g. also javascript) with regex for certain strings
         if checkOnlySourceCodeOfSite:
@@ -55,7 +55,8 @@ def check_site(url: str, element_type: str, class_name: str, class_search_string
     except AttributeError as e:
         exception = str(sys.exc_info()[0])
         logger.log.exception("Could not write element to sql file because of: " + exception)
-        notifier.notify_about_exception_via_pushover(site=site, exception=exception)
+        if notify:
+            notifier.notify_about_exception_via_pushover(site=site, exception=exception)
     finally:
         sqlconn.close_connection()
 
