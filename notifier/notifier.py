@@ -20,31 +20,31 @@ class Notifier:
             self.token = data['token']
 
     def notify_about_new_element_via_pushover(self, site, element_to_write):
-        self.logger.log.info("now notifying via pushover api about " + site + " with new element " + element_to_write)
+        self.logger.log.info("now notifying via pushover api about site '{}' with new element '{}'".format(site, element_to_write))
         conn = http.client.HTTPSConnection("api.pushover.net:443")
         conn.request("POST", "/1/messages.json",
         urllib.parse.urlencode({
         "token": self.token,
         "user": self.user_key,
-        "message": "New element on site '" + site + "' found: '" + element_to_write + "'",
+        "message": "New element on site '{}' found: '{}'".format(site, element_to_write),
         "priority": 0
         }), { "Content-type": "application/x-www-form-urlencoded" })
         resp = conn.getresponse()
-        self.logger.log.info("Response to POST to Pushover is: " + resp.read().decode() + "")
+        self.logger.log.info("Response to POST to Pushover is : {}".format(resp.read().decode()))
         # sleep a second to not overload the api..
         time.sleep(1)
 
     def notify_about_exception_via_pushover(self, site, exception):
-        self.logger.log.info("now notifying via pushover api about exception while processing new element at " + site)
+        self.logger.log.info("now notifying via pushover api about exception while processing new element on site '{}'".format(site))
         conn = http.client.HTTPSConnection("api.pushover.net:443")
         conn.request("POST", "/1/messages.json",
         urllib.parse.urlencode({
         "token": self.token,
         "user": self.user_key,
-        "message": "Exception occurred while processing new element on site '" + site + "' : '" + exception + "'",
+        "message": "Exception occurred while processing new element on site '{}': '{}'".format(site, exception),
         "priority": 0
         }), { "Content-type": "application/x-www-form-urlencoded" })
         resp = conn.getresponse()
-        self.logger.log.info("Response to POST to Pushover is: " + resp.read().decode() + "")
+        self.logger.log.info("Response to POST to Pushover is : {}".format(resp.read().decode()))
         # sleep a second to not overload the api..
         time.sleep(1)
